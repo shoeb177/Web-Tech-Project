@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+    <head>
+        <title>Profile Management</title>
+        <link rel="stylesheet" href="/css folder/profileStyle.css">
+    </head>
+
+    <body>
+        <div class="profile-container">
+            <div class="profile-header">
+               
+                <h2>Shoeb Shanto</h2>
+                <p>shanto@gmail.com</p>
+            </div>
+
+            <div class="tab-container">
+                <div class="tab active" data-tab="view">View Profile</div>
+                <div class="tab" data-tab="edit">Edit Profile</div>
+               
+                <div class="tab" data-tab="password">Reset Password</div>
+            </div>
+
+            <div class="tab-content active" id="view-tab">
+                <div class="profile-section">
+                    <h3>Personal Information</h3>
+                    <div class="profile-info">
+                        <div class="info-item">
+                            <label>First Name</label>
+                            <span id="view-first-name">Shoeb</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Last Name</label>
+                            <span id="view-last-name">shanto</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Email</label>
+                            <span id="view-email">shanto@egmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Phone</label>
+                            <span id="view-phone">+441028391</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Date of Birth</label>
+                            <span id="view-dob">February 5, 1970</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Address</label>
+                            <span id="view-address">meherpur, meherpur</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="edit-tab">
+                <div class="profile-section">
+                    <h3>Edit Profile</h3>
+                    <form id="edit-profile-form">
+                        <div class="profile-info">
+                            <div class="input-group">
+                                <label for="edit-first-name">First Name</label>
+                                <input type="text" id="edit-first-name" value="" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="edit-last-name">Last Name</label>
+                                <input type="text" id="edit-last-name" value="" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="edit-email">Email</label>
+                                <input type="email" id="edit-email" value="" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="edit-phone">Phone</label>
+                                <input type="tel" id="edit-phone" value="">
+                            </div>
+                            <div class="input-group">
+                                <label for="edit-dob">Date of Birth</label>
+                                <input type="date" id="edit-dob" value="">
+                            </div>
+                            <div class="input-group">
+                                <label for="edit-address">Address</label>
+                                <textarea id="edit-address" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="cancel" id="cancel-edit">Cancel</button>
+                            <button type="submit">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+         
+
+            <div class="tab-content" id="password-tab">
+                <div class="profile-section">
+                    <h3>Reset Password</h3>
+                    <form id="reset-password-form">
+                        <div class="input-group">
+                            <label for="current-password">Current Password</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="current-password" required>
+                               
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="new-password">New Password</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="new-password" required>
+                               
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="confirm-password">Confirm New Password</label>
+                            <div class="password-wrapper">
+                                <input type="password" id="confirm-password" required>
+                                
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit">Change Password</button>
+                        </div>
+                        <div class="message" id="password-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+       
+        <script src="/js folder/profile.js"></script>
+    </body>
+</html>

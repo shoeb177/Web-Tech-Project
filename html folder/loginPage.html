@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login Page</title>
+        <link rel="stylesheet" href="/css folder/loginPageStyle.css">
+       
+    </head>
+
+    <body>
+    <div class="loginContainer">
+        <form id="loginForm" method = "post">
+        <center><image src="/image/car.png" width="70px" alt="logo"></image></center>
+        <h2 id="loginTitleTxt">Login</h2>
+
+        <div class="inGrp">
+            <label for="email">Email</label>
+            <input type="email" id="email" name = "email" value = "" required />
+        </div>
+
+        <div class="inGrp">
+            <label for="password">Password</label>
+            <div class="password-wrapper">
+
+            <input type="password" id="password" name = "password" value="" required />
+            <span id="togglePassword"></span>
+            </div>
+        </div>
+
+        <button type="submit" name="submit" value="submit">Login</button>
+
+        <p class="message" id="message"></p>
+
+        <div class="links">
+            <a href="/html folder/forgotPasswordPage.html" target="_parent">Forgot Password?</a><br>
+            <a href="/html folder/signupPage.html">Don't have an account? Sign up</a>
+        </div>
+
+        </form>
+    </div>
+
+    <script src="/js folder/login.js"></script> 
+    </body>
+
+</html>

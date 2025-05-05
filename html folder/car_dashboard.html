@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Car Rental Dashboard</title>
+  <link rel="stylesheet" href="/css folder/car_dashboard.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <header>
+      <h1>Car Rental Dashboard</h1>
+      <nav>
+        <a href="profile.html"><button onclick="openProfile()">Profile</button></a>
+        <a href="loginPage.html"><button onclick="logout()">Logout</button></a>
+        
+      </nav>
+    </header>
+
+    <section class="summary-widgets">
+      <div class="widget" onclick="viewDetails('inventory')">
+        <a href="vehicle.html">
+        <h2></h2>
+        <p>Vehicles</p>
+      
+     </a>
+
+      </div>
+      <div class="widget" onclick="viewDetails('customers')">
+        <a href="customer.html">
+        <h2></h2>
+        <p>Customers</p>
+      </a>
+      </div>
+      <div class="widget" onclick="viewDetails('damage')">
+        <h2>3</h2>
+        <p>Damage Reports</p>
+      </div>
+      <div class="widget" onclick="viewDetails('fuel')">
+        <h2>28</h2>
+        <p>Fuel Logs</p>
+      </div>
+      <div class="widget" onclick="viewDetails('maintenance')">
+        <h2>9</h2>
+        <p>Maintenance Records</p>
+      </div>
+    </section>
+
+    <section class="quick-actions">
+      <h2>Quick Actions</h2>
+      <div class="quick-buttons">
+        <a href="/html folder/add_vehicle.html"><button>Add Vehicle</button></a>
+        
+       
+
+        <a href="register_customer.html"><button>Register Customer</button></a>
+
+        <button onclick="reportDamage()">Report Damage</button>
+        <button onclick="trackFuel()">Track Fuel</button>
+        <button onclick="addMaintenance()">Add Maintenance</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="/js folder/car_dashboard.js"></script>
+</body>
+</html>
