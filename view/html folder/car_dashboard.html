@@ -9,51 +9,43 @@
 <body>
   <div class="dashboard-container">
     <header>
-      <h1>Car Rental Dashboard</h1>
+      <h1>🚗 Car Rental Dashboard</h1>
       <nav>
         <a href="profile.html"><button onclick="openProfile()">Profile</button></a>
         <a href="loginPage.html"><button onclick="logout()">Logout</button></a>
-        
       </nav>
     </header>
 
     <section class="summary-widgets">
       <div class="widget" onclick="viewDetails('inventory')">
         <a href="vehicle.html">
-        <h2></h2>
-        <p>Vehicles</p>
-      
-     </a>
-
+          <h2></h2>
+          <p>Vehicles</p>
+        </a>
       </div>
       <div class="widget" onclick="viewDetails('customers')">
         <a href="customer.html">
-        <h2></h2>
-        <p>Customers</p>
-      </a>
+          <h2></h2>
+          <p>Customers</p>
+        </a>
       </div>
       <div class="widget" onclick="viewDetails('damage')">
         <a href="damage_report.html">
-        <h2></h2>
-        <p>Damage Reports</p>
-        
+          <h2></h2>
+          <p>Damage Reports</p>
         </a>
       </div>
       <div class="widget" onclick="viewDetails('fuel')">
         <a href="fuel.html">
-
-        <h2></h2>
-        <p>Fuel Logs</p>
+          <h2></h2>
+          <p>Fuel Logs</p>
         </a>
       </div>
       <div class="widget" onclick="viewDetails('maintenance')">
         <a href="maintenance.html">
-  
-
-        <h2></h2>
-        <p>Maintenance Records</p>
+          <h2></h2>
+          <p>Maintenance Records</p>
         </a>
-
       </div>
     </section>
 
@@ -61,17 +53,73 @@
       <h2>Quick Actions</h2>
       <div class="quick-buttons">
         <a href="../../view/html folder/add_vehicle.html"><button>Add Vehicle</button></a>
-        
-       
-
         <a href="register_customer.html"><button>Register Customer</button></a>
-
         <button onclick="AddFuel()">Add Fuel</button>
         <button onclick="addMaintenance()">Add Maintenance</button>
+      </div>
+    </section>
+
+    <section class="">
+      <h2></h2>
+      <nav class="tabs">
+        <button onclick="showTab('viewCars')">View Cars</button>
+        <button onclick="showTab('rentCar')">Rent Car</button>
+        <button onclick="showTab('returnCar')">Return Car</button>
+        <button onclick="window.location.href='../view/searchFilter.html'">Search Car</button>
+      </nav>
+
+      <!-- View Cars Tab -->
+      <div id="viewCars" class="tab-content">
+        <h3>Available Cars</h3>
+        <ul class="car-list">
+          <li>Toyota Corolla 
+            <input type="datetime-local" id="bookTime1"> 
+            <button onclick="bookCar('Toyota Corolla', 'bookTime1')">Book</button>
+          </li>
+          <li>Suzuki 
+            <input type="datetime-local" id="bookTime2"> 
+            <button onclick="bookCar('Suzuki', 'bookTime2')">Book</button>
+          </li>
+          <li>Honda Civic 
+            <input type="datetime-local" id="bookTime3"> 
+            <button onclick="bookCar('Honda Civic', 'bookTime3')">Book</button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Rent Car Tab -->
+      <div id="rentCar" class="tab-content" style="display:none;">
+        <h3>Rent a Car</h3>
+        <select id="rentCarName">
+          <option value="Toyota Corolla">Toyota Corolla</option>
+          <option value="Suzuki">Suzuki</option>
+          <option value="Honda Civic">Honda Civic</option>
+        </select>
+        <input type="datetime-local" id="rentTime">
+        <button onclick="rentCar()">Confirm Rent</button>
+      </div>
+
+      <!-- Return Car Tab -->
+      <div id="returnCar" class="tab-content" style="display:none;">
+        <h3>Return a Car</h3>
+        <select id="returnCarName">
+          <option value="Toyota Corolla">Toyota Corolla</option>
+          <option value="Suzuki">Suzuki</option>
+          <option value="Honda Civic">Honda Civic</option>
+        </select>
+        <input type="datetime-local" id="returnTime">
+        <button onclick="returnCar()">Confirm Return</button>
       </div>
     </section>
   </div>
 
   <script src="../../asset/js folder/car_dashboard.js"></script>
+  <script>
+    function showTab(tabId) {
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.style.display = 'none');
+      document.getElementById(tabId).style.display = 'block';
+    }
+  </script>
 </body>
 </html>
