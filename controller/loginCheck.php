@@ -1,81 +1,33 @@
 <?php
 session_start();
-error_reporting(E_ALL);
+include '../Model/db.php';  // include the DB connection file
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-require_once('../Model/userModel.php');
+    // Escape inputs for security
+    $email = $conn->real_escape_string($email);
+    $password = $conn->real_escape_string($password);
 
-function validateEmail($Email) {
-    $email = trim($Email);
-    if($Email === "") {
-        return "Email is required";
+    // Query the table with backticks because of the space in table name
+    $sql = "SELECT * FROM `user info` WHERE Email='$email' AND Password='$password' LIMIT 1";
+    $result = $conn->query($sql);
+
+    if ($result && $result->num_rows == 1) {
+        // User found, set session variables or redirect as needed
+        $row = $result->fetch_assoc();
+        $_SESSION['user_id'] = $row['ID'];
+        $_SESSION['user_name'] = $row['First Name'];
+
+        // Redirect to dashboard
+        header("Location: ../view/html folder/car_dashboard.html");
+        exit();
+    } else {
+        // Invalid credentials
+        echo "Invalid email or password.";
     }
-    if(!filter_var($Email,FILTER_VALIDATE_EMAIL)) {
-        return "Invalid email format";
-    }
-    return null;
-}
-
-function validatePassword($Password) {
-    $password = trim($Password);
-    if($Password === "") {
-        return "Password is required";
-    }
-    if(strlen($Password) < 8) {
-        return "Password must be at least 8 characters";
-    }
-    return null;
-}
-function authUser($Email, $Password) {
-
-    $user = getUserByEmail($Email); 
-    if(!$user) {
-        header("Location: ../../view/html folder/loginPage.html?message=" . urlencode("User doesn't exist"));
-        exit;
-    }
-
-    if($user['Password'] !== $Password) {
-        header("Location: ../../view/html folder/loginPage.html?message=" . urlencode("Invalid password"));
-        exit;
-    }
-
-    $_SESSION['status'] = true;
-    $_SESSION['user_id'] = $user['ID'];
-    $_SESSION['Email'] = $Email;
-
-
- 
-    $_SESSION['name'] = $user['First Name'] .' ' .$user['Last Name'];
-   
-
-    setcookie('status', 'true', time() + 3000, '/');
-
-    if($role === 'Admin') {
-        header("Location: ../../view/php/adminMenu.php");
-    }
-     else if ($role === 'User') {
-        header("Location: ../../view/php/userMenu.php");
-    } 
-    exit;
-}
-
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $email = trim($_POST['Email'] ?? '');
-    $password = trim($_POST['Password'] ?? '');
-  
-    $emailError = validateEmail($Email);
-    $passwordError = validatePassword($Password);
-
-    if ($emailError || $passwordError) {
-        $_SESSION['login_error'] = ($emailError ?? '').' ' .($passwordError ?? '');
-        header("Location: ../../view/html folder/loginPage.html");
-        exit;
-    }
-
-    authUser($email,$password);
-
 } else {
-    header("Location: ../../view/html folder/loginPage.html?message=" . urlencode("Unauthorized access"));
-    exit;
+    echo "Invalid request method.";
 }
+?>

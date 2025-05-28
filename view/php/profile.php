@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $editErrors[] = "Invalid email format.";
         }
         if (empty($editErrors)) {
-            //updateUser Profile();
+            
         }
     }
     if (isset($_POST['reset-password'])) {
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $passwordErrors[] = "New Password and Confirm Password do not match.";
         }
         if (empty($passwordErrors)) {
-            //updateUser Password();
+            
         }
     }
 }

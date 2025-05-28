@@ -1,20 +1,14 @@
 <?php
+$servername = "localhost";   // your server, usually localhost
+$username = "root";          // your DB username
+$password = "";              // your DB password
+$dbname = "car_rental";     // your database name
 
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    $dbHost = "localhost";
-    $dbUser = "root";
-    $dbPassword = "";
-    $dbName = "car-rental";
-
-    $conn = mysqli_connect($dbHost,$dbUser,$dbPassword,$dbName);
-
-    function getConnection() {
-        global $dbName;
-        global $dbPassword;
-        global $dbUser;
-
-        $conn = mysqli_connect($GLOBALS['dbHost'],$dbUser,$dbPassword,$dbName);
-
-        return $conn;
-    }
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 ?>
